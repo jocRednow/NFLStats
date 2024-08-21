@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        AsyncImage(url: URL(string: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png"), scale: 4)
+        VStack(spacing: 40) {
+            HStack {
+                AsyncImage(url: URL(string: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png"), scale: 4)
+            }
+            Text("🏈") // control+command+space
+        }
+        Spacer()
     }
 }
 
