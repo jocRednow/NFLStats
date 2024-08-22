@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct SignInView: View {
-    
+        
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var showSheet: Bool = false
     
     var body: some View {
         ZStack {
-//            Color.white.ignoresSafeArea()
-            
             VStack {
-                TitleSection()
+                TitleSectionView()
                 
                 Spacer()
                 
@@ -25,10 +24,14 @@ struct SignInView: View {
                 PasswordFieldSection(textField: $password)
                 
                 Button(action: {
-                    // Sing up view
+                    showSheet.toggle()
                 }, label: {
                     Text("Don't have an account?")
                         .foregroundColor(.accentColor).opacity(0.7)
+                })
+                .sheet(isPresented: $showSheet, content: {
+                    SignUpView(showSheet: $showSheet)
+                        .presentationDetents([.medium, .large])
                 })
                 
                 Spacer()
@@ -38,12 +41,16 @@ struct SignInView: View {
                     // Action on this btn
                 }, label: {
                     Text("Sign In")
-                        .foregroundColor(.accentColor)
-                        .frame(height: 55)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .border(Color.primary, width: 3)
-                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .font(.title3)
+                        .bold()
+                        .frame(maxWidth: .infinity)
                         .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.accentColor)
+                            )
+                        .padding(.horizontal)
                 })
                 
             }
@@ -55,21 +62,6 @@ struct SignInView: View {
     SignInView()
 }
 
-struct TitleSection: View {
-    var body: some View {
-        HStack {
-            Text("Welcome to NFL Stats!")
-                .font(.title)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.primary)
-            AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
-            Spacer()
-            
-        }
-        .padding()
-    }
-}
-
 struct EmailFieldSection: View {
     
     @Binding var textField: String
@@ -77,20 +69,22 @@ struct EmailFieldSection: View {
     var body: some View {
         HStack {
             Image(systemName: "mail")
-                .foregroundColor(.primary)
+                .foregroundColor(.accentColor)
             TextField("Email", text: $textField)
             
             Spacer()
             
-            Image(systemName: "checkmark")
-                .fontWeight(.bold)
-                .foregroundColor(.green)
+            if textField.count != 0 {
+                Image(systemName: textField.isValidEmail() ? "checkmark" : "xmark")
+                    .fontWeight(.bold)
+                    .foregroundColor(textField.isValidEmail() ? .green.opacity(0.5) : .red.opacity(0.5))
+            }
         }
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 10)
             .stroke(lineWidth: 2)
-            .foregroundColor(.primary)
+            .foregroundColor(.accentColor)
         )
         .padding()
     }
@@ -103,20 +97,22 @@ struct PasswordFieldSection: View {
     var body: some View {
         HStack {
             Image(systemName: "lock")
-                .foregroundColor(.primary)
-            TextField("Password", text: $textField)
+                .foregroundColor(.accentColor)
+            SecureField("Password", text: $textField)
             
             Spacer()
             
-            Image(systemName: "checkmark")
-                .fontWeight(.bold)
-                .foregroundColor(.green)
+            if textField.count != 0 {
+                Image(systemName: textField.isValidPassword() ? "checkmark" : "xmark")
+                    .fontWeight(.bold)
+                    .foregroundColor(textField.isValidPassword() ? .green.opacity(0.5) : .red.opacity(0.5))
+            }
         }
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 10)
             .stroke(lineWidth: 2)
-            .foregroundColor(.primary)
+            .foregroundColor(.accentColor)
         )
         .padding()
     }

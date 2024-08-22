@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D70220802C74D7EF00CD1733 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D702207F2C74D7EF00CD1733 /* SignInView.swift */; };
+		D70220822C75E0CA00CD1733 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70220812C75E0CA00CD1733 /* MapView.swift */; };
+		D70220852C75EB8200CD1733 /* TitleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70220842C75EB8200CD1733 /* TitleSectionView.swift */; };
+		D70220872C75F10F00CD1733 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70220862C75F10F00CD1733 /* SignUpView.swift */; };
+		D79117562C76189300E1F3E4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79117552C76189300E1F3E4 /* String.swift */; };
 		D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */; };
 		D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58E2C74A6C1006FC710 /* ContentView.swift */; };
 		D7AFC5912C74A6C3006FC710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AFC5902C74A6C3006FC710 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 
 /* Begin PBXFileReference section */
 		D702207F2C74D7EF00CD1733 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		D70220812C75E0CA00CD1733 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D70220842C75EB8200CD1733 /* TitleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSectionView.swift; sourceTree = "<group>"; };
+		D70220862C75F10F00CD1733 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D79117552C76189300E1F3E4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D7AFC5892C74A6C1006FC710 /* NFLStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFLStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLStatsApp.swift; sourceTree = "<group>"; };
 		D7AFC58E2C74A6C1006FC710 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,8 +46,76 @@
 			isa = PBXGroup;
 			children = (
 				D702207F2C74D7EF00CD1733 /* SignInView.swift */,
+				D70220812C75E0CA00CD1733 /* MapView.swift */,
+				D70220842C75EB8200CD1733 /* TitleSectionView.swift */,
+				D70220862C75F10F00CD1733 /* SignUpView.swift */,
 			);
 			name = Views;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		D70220832C75EAE300CD1733 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D79117542C76185300E1F3E4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D79117552C76189300E1F3E4 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D79117612C77458C00E1F3E4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D79117622C7745D000E1F3E4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D79117542C76185300E1F3E4 /* Extensions */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D79117632C77460000E1F3E4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D79117652C77465B00E1F3E4 /* Auth */,
+				D79117662C77466300E1F3E4 /* Profile */,
+				D79117642C77460F00E1F3E4 /* Root */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D79117642C77460F00E1F3E4 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				D7AFC58E2C74A6C1006FC710 /* ContentView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		D79117652C77465B00E1F3E4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D702207E2C74D7AA00CD1733 /* Views */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D79117662C77466300E1F3E4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D7AFC5802C74A6C1006FC710 = {
@@ -61,9 +137,10 @@
 		D7AFC58B2C74A6C1006FC710 /* NFLStats */ = {
 			isa = PBXGroup;
 			children = (
-				D702207E2C74D7AA00CD1733 /* Views */,
-				D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */,
-				D7AFC58E2C74A6C1006FC710 /* ContentView.swift */,
+				D79117612C77458C00E1F3E4 /* App */,
+				D79117622C7745D000E1F3E4 /* Components */,
+				D79117632C77460000E1F3E4 /* Core */,
+				D70220832C75EAE300CD1733 /* Models */,
 				D7AFC5902C74A6C3006FC710 /* Assets.xcassets */,
 				D7AFC5922C74A6C3006FC710 /* Preview Content */,
 			);
@@ -94,6 +171,8 @@
 			dependencies = (
 			);
 			name = NFLStats;
+			packageProductDependencies = (
+			);
 			productName = NFLStats;
 			productReference = D7AFC5892C74A6C1006FC710 /* NFLStats.app */;
 			productType = "com.apple.product-type.application";
@@ -122,6 +201,8 @@
 				Base,
 			);
 			mainGroup = D7AFC5802C74A6C1006FC710;
+			packageReferences = (
+			);
 			productRefGroup = D7AFC58A2C74A6C1006FC710 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,8 +230,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70220802C74D7EF00CD1733 /* SignInView.swift in Sources */,
+				D70220822C75E0CA00CD1733 /* MapView.swift in Sources */,
 				D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */,
 				D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */,
+				D79117562C76189300E1F3E4 /* String.swift in Sources */,
+				D70220872C75F10F00CD1733 /* SignUpView.swift in Sources */,
+				D70220852C75EB8200CD1733 /* TitleSectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
