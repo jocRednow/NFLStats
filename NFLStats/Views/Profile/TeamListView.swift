@@ -13,7 +13,7 @@ struct Logo: Decodable {
     let height: Int
 }
 
-struct Team: Decodable, Hashable, Identifiable {
+struct Team: Decodable, Identifiable {
     let id: String
     let displayName: String
     let nickname: String
@@ -28,16 +28,22 @@ struct Team: Decodable, Hashable, Identifiable {
 //    }
 }
 
-extension Team {
+//extension Team {
 //    static let example = Logo(href: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png", width: 50, height: 50)
-    static let example = Team(id: "7", displayName: "Denver Broncos", nickname: "Broncos", location: "Denver", color: "0a2343", alternateColor: "fc4c02")
+//    static let example = Team(id: "7", displayName: "Denver Broncos", nickname: "Broncos", location: "Denver", color: "0a2343", alternateColor: "fc4c02")
+//}
+
+struct TeamContainer: Decodable, Identifiable {
+    let id = UUID()
+    let team: Team
 }
 
 struct League: Decodable, Identifiable {
-    var id: String
-    var name: String
-    var abbreviation: String
-    var teams: [Team]
+    let id: String
+    let name: String
+    let abbreviation: String
+    let teams: [TeamContainer]
+    let year: Int
 }
 
 struct Sport: Decodable, Identifiable {
@@ -47,7 +53,7 @@ struct Sport: Decodable, Identifiable {
 }
 
 struct Query: Decodable {
-    var sports: [Sport]
+    let sports: [Sport]
 }
 
 struct TeamListView: View {
@@ -56,68 +62,67 @@ struct TeamListView: View {
     
     var body: some View {
         NavigationStack {
-            List(networkManager.data, id: \.self) { team in
-                HStack {
-                    Text(team.displayName)
-                    Circle()
-                         .foregroundColor(Color(hex: team.color))
-                    Circle()
-                         .foregroundColor(Color(hex: team.alternateColor))
-                    Spacer()
-                    Text(team.location)
-//                    AsyncImage(url: URL(string: album.ref))
-//                    { phase in
-//                        switch phase {
-//                        case .failure: Image(systemName: "photo") .font(.largeTitle)
-//                        case .success(let image):
-//                            image.resizable()
-//                        default: ProgressView()
-//                        }
-//                    }
-//                    .frame(width: 150, height: 150)
-//                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    
-//                    VStack(alignment: .leading) {
-//                        Text("\(album.id)").bold()
-//                        Text(album.title).bold().font(.title3)
-//                    }
+            List(networkManager.sports) { sport in
+                Text(sport.name)
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .bold()
+                Spacer()
+                VStack {
+                    ForEach(sport.leagues, id: \.id) { league in
+                        Text(league.abbreviation)
+                            .font(.title2)
+                        List(league.teams) { teamContainer in
+                            HStack {
+                                VStack {
+                                    Text(teamContainer.team.displayName)
+                                        .font(.headline)
+                                    Text("From: \(teamContainer.team.location)")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                Spacer()
+                                Circle()
+                                    .foregroundColor(Color(hex: teamContainer.team.color))
+                                    .frame(width: 20, height: 20, alignment: .center)
+                                Circle()
+                                    .foregroundColor(Color(hex: teamContainer.team.alternateColor))
+                                    .frame(width: 20, height: 20, alignment: .center)
+                            }
+                        }
+                    }
                 }
+                .frame(height: 900)
             }
             .scrollContentBackground(.hidden)
-            .background(.indigo)
-            .navigationTitle("Teams")
+            .background(.white)
+            .navigationTitle("Teams:")
             .onAppear {
                 networkManager.fetchTeamList()
             }
-        }
-    }
-    
-//    private func fetchRemoteData() {
-//            let url = URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams")!
-//            let request = URLRequest(url: url)
-//            request.httpMethod = "GET"  // optional
-//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//            let task = URLSession.shared.dataTask(with: request){ data, response, error in
-//                if let error = error {
-//                    print("Error while fetching data:", error)
-//                    return
-//                }
-//
-//                guard let data = data else {
-//                    return
-//                }
-//
-//                do {
-//                    let decodedData = try JSONDecoder().decode(Teams.self, from: data)
-//                    // Assigning the data to the array
-//                    self.teamList = decodedData
-//                } catch let jsonError {
-//                    print("Failed to decode json", jsonError)
+//            List(networkManager.sports) { item in
+//                Text(item.name)
+//                ForEach(item.leagues) { league in
+//                    List(league.teams, id: \.self) { team in
+//                        HStack {
+//                            Text(team.displayName)
+//                            Circle()
+//                                 .foregroundColor(Color(hex: team.color))
+//                            Circle()
+//                                 .foregroundColor(Color(hex: team.alternateColor))
+//                            Spacer()
+//                            Text(team.location)
+//                        }
+//                    }
 //                }
 //            }
-//
-//            task.resume()
-//        }
+//            .scrollContentBackground(.hidden)
+//            .background(.indigo)
+//            .navigationTitle("Teams")
+//            .onAppear {
+//                networkManager.fetchTeamList()
+//            }
+        }
+    }
 }
 
 #Preview {
