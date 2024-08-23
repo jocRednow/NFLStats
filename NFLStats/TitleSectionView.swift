@@ -9,20 +9,20 @@ import SwiftUI
 
 struct TitleSectionView: View {
     
+    @Binding var title: String
+    
     var body: some View {
         HStack {
-            Text("Welcome to NFL Stats!")
+            Text(title)
                 .font(.title)
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.accentColor)
-            AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
             Spacer()
-            
         }
         .padding()
     }
 }
 
 #Preview {
-    TitleSectionView()
+    TitleSectionView(title: .constant("Create an account:"))
 }

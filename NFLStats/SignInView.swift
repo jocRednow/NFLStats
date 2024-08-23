@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
         
+    @State private var title: String = "Welcome to NFL Stats!"
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showSheet: Bool = false
@@ -16,7 +17,9 @@ struct SignInView: View {
     var body: some View {
         ZStack {
             VStack {
-                TitleSectionView()
+                AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
+                
+                TitleSectionView(title: $title)
                 
                 Spacer()
                 

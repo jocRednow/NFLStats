@@ -13,7 +13,8 @@ struct NFLStatsApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            SignInView()
+//            SignInView()
+            TeamListView()
         }
     }
 }

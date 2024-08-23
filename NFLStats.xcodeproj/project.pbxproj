@@ -11,6 +11,9 @@
 		D70220822C75E0CA00CD1733 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70220812C75E0CA00CD1733 /* MapView.swift */; };
 		D70220852C75EB8200CD1733 /* TitleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70220842C75EB8200CD1733 /* TitleSectionView.swift */; };
 		D70220872C75F10F00CD1733 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70220862C75F10F00CD1733 /* SignUpView.swift */; };
+		D76FE2332C787C0E00DB4488 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2322C787C0E00DB4488 /* TeamListView.swift */; };
+		D76FE2372C78C87200DB4488 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2362C78C87200DB4488 /* Color.swift */; };
+		D76FE2392C78C93400DB4488 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2382C78C93400DB4488 /* NetworkManager.swift */; };
 		D79117562C76189300E1F3E4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79117552C76189300E1F3E4 /* String.swift */; };
 		D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */; };
 		D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58E2C74A6C1006FC710 /* ContentView.swift */; };
@@ -19,10 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D702207F2C74D7EF00CD1733 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		D70220812C75E0CA00CD1733 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		D70220842C75EB8200CD1733 /* TitleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSectionView.swift; sourceTree = "<group>"; };
-		D70220862C75F10F00CD1733 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D702207F2C74D7EF00CD1733 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInView.swift; path = ../../SignInView.swift; sourceTree = "<group>"; };
+		D70220812C75E0CA00CD1733 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = ../../MapView.swift; sourceTree = "<group>"; };
+		D70220842C75EB8200CD1733 /* TitleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitleSectionView.swift; path = ../../TitleSectionView.swift; sourceTree = "<group>"; };
+		D70220862C75F10F00CD1733 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpView.swift; path = ../../SignUpView.swift; sourceTree = "<group>"; };
+		D76FE2322C787C0E00DB4488 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
+		D76FE2362C78C87200DB4488 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D76FE2382C78C93400DB4488 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D79117552C76189300E1F3E4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D7AFC5892C74A6C1006FC710 /* NFLStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFLStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLStatsApp.swift; sourceTree = "<group>"; };
@@ -42,18 +48,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D702207E2C74D7AA00CD1733 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D702207F2C74D7EF00CD1733 /* SignInView.swift */,
-				D70220812C75E0CA00CD1733 /* MapView.swift */,
-				D70220842C75EB8200CD1733 /* TitleSectionView.swift */,
-				D70220862C75F10F00CD1733 /* SignUpView.swift */,
-			);
-			name = Views;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		D70220832C75EAE300CD1733 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,10 +55,36 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D76FE2342C78C7E100DB4488 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D79117652C77465B00E1F3E4 /* Auth */,
+				D76FE23A2C78CD6300DB4488 /* Profile */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D76FE2352C78C7F100DB4488 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D76FE2382C78C93400DB4488 /* NetworkManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D76FE23A2C78CD6300DB4488 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D76FE2322C787C0E00DB4488 /* TeamListView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		D79117542C76185300E1F3E4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D79117552C76189300E1F3E4 /* String.swift */,
+				D76FE2362C78C87200DB4488 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -80,42 +100,19 @@
 		D79117622C7745D000E1F3E4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D79117542C76185300E1F3E4 /* Extensions */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		D79117632C77460000E1F3E4 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				D79117652C77465B00E1F3E4 /* Auth */,
-				D79117662C77466300E1F3E4 /* Profile */,
-				D79117642C77460F00E1F3E4 /* Root */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		D79117642C77460F00E1F3E4 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				D7AFC58E2C74A6C1006FC710 /* ContentView.swift */,
-			);
-			path = Root;
 			sourceTree = "<group>";
 		};
 		D79117652C77465B00E1F3E4 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D702207E2C74D7AA00CD1733 /* Views */,
+				D702207F2C74D7EF00CD1733 /* SignInView.swift */,
+				D70220812C75E0CA00CD1733 /* MapView.swift */,
+				D70220842C75EB8200CD1733 /* TitleSectionView.swift */,
+				D70220862C75F10F00CD1733 /* SignUpView.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		D79117662C77466300E1F3E4 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		D7AFC5802C74A6C1006FC710 = {
@@ -138,9 +135,12 @@
 			isa = PBXGroup;
 			children = (
 				D79117612C77458C00E1F3E4 /* App */,
+				D79117542C76185300E1F3E4 /* Extensions */,
 				D79117622C7745D000E1F3E4 /* Components */,
-				D79117632C77460000E1F3E4 /* Core */,
 				D70220832C75EAE300CD1733 /* Models */,
+				D76FE2352C78C7F100DB4488 /* ViewModels */,
+				D76FE2342C78C7E100DB4488 /* Views */,
+				D7AFC58E2C74A6C1006FC710 /* ContentView.swift */,
 				D7AFC5902C74A6C3006FC710 /* Assets.xcassets */,
 				D7AFC5922C74A6C3006FC710 /* Preview Content */,
 			);
@@ -232,10 +232,13 @@
 				D70220802C74D7EF00CD1733 /* SignInView.swift in Sources */,
 				D70220822C75E0CA00CD1733 /* MapView.swift in Sources */,
 				D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */,
+				D76FE2332C787C0E00DB4488 /* TeamListView.swift in Sources */,
 				D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */,
+				D76FE2392C78C93400DB4488 /* NetworkManager.swift in Sources */,
 				D79117562C76189300E1F3E4 /* String.swift in Sources */,
 				D70220872C75F10F00CD1733 /* SignUpView.swift in Sources */,
 				D70220852C75EB8200CD1733 /* TitleSectionView.swift in Sources */,
+				D76FE2372C78C87200DB4488 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

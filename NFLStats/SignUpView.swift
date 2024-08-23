@@ -11,21 +11,14 @@ struct SignUpView: View {
     
     @Binding var showSheet: Bool
     
+    @State private var title: String = "Create an account:"
     @State private var email: String = ""
     @State private var password: String = ""
     
     var body: some View {
         ZStack {
             VStack {
-                HStack {
-                    Text("Create an account:")
-                        .font(.title)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.accentColor)
-                    Spacer()
-                    
-                }
-                .padding()
+                TitleSectionView(title: $title)
                 
                 Spacer()
                 
@@ -63,6 +56,6 @@ struct SignUpView: View {
     }
 }
 
-//#Preview {
-//    SignUpView()
-//}
+#Preview {
+    SignUpView(showSheet: .constant(true))
+}
