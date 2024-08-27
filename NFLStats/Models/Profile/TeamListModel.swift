@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Logo: Decodable {
+struct Logo: Decodable, Identifiable {
+    let id = UUID()
     let href: String
     let width: Int
     let height: Int
@@ -47,6 +48,7 @@ struct Sport: Decodable, Identifiable {
     let leagues: [League]
 }
 
-struct Query: Decodable {
+struct Query: Decodable, Identifiable {
+    let id = UUID()
     let sports: [Sport]
 }

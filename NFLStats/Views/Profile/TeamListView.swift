@@ -9,66 +9,82 @@ import SwiftUI
 
 struct TeamListView: View {
     
-    @StateObject var networkManager = NetworkManager.shared
-    @State private var sports = [Sport]()
-    @State private var showProgress = false
-    @State private var showError = false
-    @State private var errorMessage = ""
+    @StateObject var networkManager = NetworkManager()
     
     var body: some View {
-
-        NavigationStack {
-            List(sports) { sport in
-                ZStack {
-                    ForEach(sport.leagues, id: \.id) { league in
-                        List(league.teams) { teamContainer in
-                            HStack {
-                                VStack {
-                                    Text(teamContainer.team.displayName)
-                                        .font(.headline)
-                                    Text("From: \(teamContainer.team.location)")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
+        
+        ZStack {
+            ForEach(networkManager.sports, id: \.id) { sport in
+                ForEach(sport.leagues, id: \.id) { league in
+                    VStack {
+                        Text(league.abbreviation)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .bold()
+                        // Tab scroll for filter data
+                        NavigationStack {
+                            List(league.teams) { teamContainer in
+                                NavigationLink {
+                                    //TeamItemView(name: teamContainer.team)
+                                } label: {
+                                    HStack {
+                                        AsyncImage(url: URL(string: teamContainer.team.logos[0].href)) { image in
+                                            image.resizable()
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                        .frame(width: 50, height: 50)
+                    
+                                        VStack(alignment: .leading) {
+                                            Text(teamContainer.team.displayName)
+                                                .font(.headline)
+                                            Text("City: \(teamContainer.team.location)")
+                                                .font(.subheadline)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .padding(.horizontal)
+                                        
+                                        Spacer()
+                                        Rectangle()
+                                            .frame(width: 20, height: 20)
+                                                .foregroundStyle(Color(hex: teamContainer.team.color))
+                                                .clipShape(
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                )
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .stroke(.thinMaterial, lineWidth: 1)
+                                                )
+                                        Rectangle()
+                                            .frame(width: 20, height: 20)
+                                                .foregroundStyle(Color(hex: teamContainer.team.alternateColor))
+                                                .clipShape(
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                )
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .stroke(.thinMaterial, lineWidth: 1)
+                                                )
+                                    }
                                 }
-                                Spacer()
-                                Circle()
-                                    .foregroundColor(Color(hex: teamContainer.team.color))
-                                    .frame(width: 20, height: 20, alignment: .center)
-                                Circle()
-                                    .foregroundColor(Color(hex: teamContainer.team.alternateColor))
-                                    .frame(width: 20, height: 20, alignment: .center)
                             }
+                            .navigationTitle("Teams list")
                         }
                         
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .opacity(showProgress ? 1.0 : 0.0)
+                        if networkManager.inProgress {
+                            ProgressView()
+                        }
                     }
-                }
-                .frame(height: 800)
-            }
-            .scrollContentBackground(.hidden)
-            .background(.white)
-            .navigationTitle("Teams:")
-            .alert(isPresented: $showError, content: {
-                Alert(title: Text(errorMessage))
-            })
-            .onAppear {
-                showProgress = true
-                networkManager.fetchTeamList { result in
-                    showProgress = false
-                    switch result {
-                    case .success(let decodedSports):
-                        print("success")
-                        sports = decodedSports
-                    case .failure(let networkError):
-                        print("failure: \(networkError)")
-                        errorMessage = warningMessage(error: networkError)
-                        showError = true
-                    }
+                    .alert(isPresented: $networkManager.showError, content: {
+                        Alert(title: Text(networkManager.errorMessage))
+                    })
                 }
             }
         }
+        .task {
+            await networkManager.fetchAllTeams()
+        }
+        
     }
 }
 

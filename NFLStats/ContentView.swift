@@ -16,14 +16,14 @@ struct ContentView: View {
             }
             Text("🏈") // control+command+space
         }
-        Spacer()
-        
-        Divider()
-        
-        Spacer()
-        VStack {
-            ContentUnavailableView.search
-        }
+//        Spacer()
+//        
+//        Divider()
+//        
+//        Spacer()
+//        VStack {
+//            ContentUnavailableView.search
+//        }
     }
 }
 

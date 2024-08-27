@@ -7,43 +7,50 @@
 
 import Foundation
 
+private actor ServiceStore {
+    
+    func loadTeamList() async throws -> [Sport] {
+        var sports = [Sport]()
+        let (data, response) = try await URLSession.shared.data (from: Link.teams.url)
+        
+        let httpResponse = response as? HTTPURLResponse
+        let statusCode = httpResponse?.statusCode ?? 0
+        
+        if statusCode == 429 {
+            throw Mistake.tooManyRequests
+        }
+        
+        guard let decodedQuery = try? JSONDecoder().decode(Query.self, from: data) else {
+            throw Mistake.decodingError
+        }
+        
+        sports = decodedQuery.sports
+        
+        return sports
+    }
+
+}
+
 final class NetworkManager: ObservableObject {
     
-    init() {}
+    @Published var sports = [Sport]()
+    @Published var inProgress = false
+    @Published var showError = false
+    @Published var errorMessage = ""
     
-    static let shared = NetworkManager()
+    private let store = ServiceStore()
     
-    func fetchTeamList(completion: @escaping (Result<[Sport], Mistake>) -> Void) {
-        print("Try to fetch")
-        
-        let fetchRequest = URLRequest(url: Link.teams.url)
-        
-        URLSession.shared.dataTask(with: fetchRequest) { (data, response, error) -> Void in
-            if error != nil {
-                print("Error while fetching data")
-                completion(.failure(.noData))
-            } else {
-                // Data is here:
-                let httpResponse = response as? HTTPURLResponse
-                print("status code: \(String(describing: httpResponse?.statusCode))")
-                
-                if httpResponse?.statusCode == 429 {
-                    completion(.failure(.tooManyRequests))
-                } else {
-                    guard let safeData = data else { return }
-                    
-                    do {
-                        let decodedQuery = try JSONDecoder().decode(Query.self, from: safeData)
-                        
-                        completion(.success(decodedQuery.sports))
-                    } catch let decodeError {
-                        print("Decoding error \(decodeError.localizedDescription)")
-                        completion(.failure(.decodingError))
-                    }
-                }
-            }
-            
-        }.resume()
+    @MainActor func fetchAllTeams() async {
+        inProgress = true
+        defer {
+            inProgress = false
+        }
+        do {
+            sports = try await store.loadTeamList()
+        } catch {
+            print("Catch: \(error)")
+            errorMessage = warningMessage(error: error as! Mistake)
+            showError = true
+        }
     }
-    
 }

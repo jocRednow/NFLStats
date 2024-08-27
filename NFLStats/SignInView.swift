@@ -42,6 +42,8 @@ struct SignInView: View {
                 
                 Button(action: {
                     // Action on this btn
+//                    print($password)
+//                    print($email)
                 }, label: {
                     Text("Sign In")
                         .foregroundColor(.white)

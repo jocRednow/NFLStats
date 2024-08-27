@@ -18,6 +18,7 @@
 		D76FE23F2C7C798200DB4488 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE23E2C7C798200DB4488 /* DataService.swift */; };
 		D76FE2422C7C7B3900DB4488 /* TeamListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2412C7C7B3900DB4488 /* TeamListModel.swift */; };
 		D76FE2442C7C869600DB4488 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2432C7C869600DB4488 /* Helpers.swift */; };
+		D76FE2462C7DC68400DB4488 /* TeamItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2452C7DC68400DB4488 /* TeamItemView.swift */; };
 		D79117562C76189300E1F3E4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79117552C76189300E1F3E4 /* String.swift */; };
 		D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */; };
 		D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58E2C74A6C1006FC710 /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 		D76FE23E2C7C798200DB4488 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D76FE2412C7C7B3900DB4488 /* TeamListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListModel.swift; sourceTree = "<group>"; };
 		D76FE2432C7C869600DB4488 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		D76FE2452C7DC68400DB4488 /* TeamItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamItemView.swift; sourceTree = "<group>"; };
 		D79117552C76189300E1F3E4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D7AFC5892C74A6C1006FC710 /* NFLStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFLStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLStatsApp.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				D76FE2322C787C0E00DB4488 /* TeamListView.swift */,
+				D76FE2452C7DC68400DB4488 /* TeamItemView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				D70220822C75E0CA00CD1733 /* MapView.swift in Sources */,
 				D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */,
 				D76FE23F2C7C798200DB4488 /* DataService.swift in Sources */,
+				D76FE2462C7DC68400DB4488 /* TeamItemView.swift in Sources */,
 				D76FE2332C787C0E00DB4488 /* TeamListView.swift in Sources */,
 				D76FE23D2C7C791100DB4488 /* APIService.swift in Sources */,
 				D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */,
