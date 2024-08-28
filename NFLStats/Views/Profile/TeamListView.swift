@@ -75,6 +75,8 @@ struct TeamListView: View {
                             ProgressView()
                         }
                     }
+                    .transition(.slide)
+                    .animation(.bouncy)
                     .alert(isPresented: $networkManager.showError, content: {
                         Alert(title: Text(networkManager.errorMessage))
                     })
