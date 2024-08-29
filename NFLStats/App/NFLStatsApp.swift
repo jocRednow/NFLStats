@@ -15,9 +15,7 @@ struct NFLStatsApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            SignInView()
-            TeamListView()
+            RootView()
         }
     }
 }

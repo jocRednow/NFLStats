@@ -24,5 +24,5 @@ struct TitleSectionView: View {
 }
 
 #Preview {
-    TitleSectionView(title: .constant("Create an account:"))
+    TitleSectionView(title: .constant("Title section view:"))
 }

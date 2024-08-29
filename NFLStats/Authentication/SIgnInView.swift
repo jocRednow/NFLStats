@@ -15,56 +15,75 @@ struct SignInView: View {
     @State private var showSheet: Bool = false
     
     var body: some View {
-        ZStack {
-            VStack {
-                AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
-                
-                TitleSectionView(title: $title)
-                
-                Spacer()
-                
-                EmailFieldSection(textField: $email)
-                PasswordFieldSection(textField: $password)
-                
-                Button(action: {
-                    showSheet.toggle()
-                }, label: {
-                    Text("Don't have an account?")
-                        .foregroundColor(.accentColor).opacity(0.7)
-                })
-                .sheet(isPresented: $showSheet, content: {
-                    SignUpView(showSheet: $showSheet)
-                        .presentationDetents([.medium, .large])
-                })
-                
-                Spacer()
-                Spacer()
-                
-                Button(action: {
-                    // Action on this btn
-//                    print($password)
-//                    print($email)
-                }, label: {
-                    Text("Sign In")
-                        .foregroundColor(.white)
-                        .font(.title3)
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.accentColor)
-                            )
-                        .padding(.horizontal)
-                })
-                
+        
+        VStack {
+            NavigationLink {
+                SignInEmailView()
+            } label: {
+                Text("Sign In")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             }
         }
+        .padding()
+        .navigationTitle("Sign In")
+        
+//        ZStack {
+//            VStack {
+//                AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
+//                
+//                TitleSectionView(title: $title)
+//                
+//                Spacer()
+//                
+//                EmailFieldSection(textField: $email)
+//                PasswordFieldSection(textField: $password)
+//                
+//                Button(action: {
+//                    showSheet.toggle()
+//                }, label: {
+//                    Text("Don't have an account?")
+//                        .foregroundColor(.accentColor).opacity(0.7)
+//                })
+//                .sheet(isPresented: $showSheet, content: {
+//                    SignUpView(showSheet: $showSheet)
+//                        .presentationDetents([.medium, .large])
+//                })
+//                
+//                Spacer()
+//                Spacer()
+//                
+//                Button(action: {
+//                    // Action on this btn
+////                    print($password)
+////                    print($email)
+//                }, label: {
+//                    Text("Sign In")
+//                        .foregroundColor(.white)
+//                        .font(.title3)
+//                        .bold()
+//                        .frame(maxWidth: .infinity)
+//                        .padding()
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 10)
+//                                .fill(Color.accentColor)
+//                            )
+//                        .padding(.horizontal)
+//                })
+//                
+//            }
+//        }
     }
 }
 
 #Preview {
-    SignInView()
+    NavigationStack {
+        SignInView()
+    }
 }
 
 struct EmailFieldSection: View {
