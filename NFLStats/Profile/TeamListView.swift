@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamListView: View {
     
     @StateObject var networkManager = NetworkManager()
+    @State private var startAnimation: Bool = false
     
     var body: some View {
         
@@ -68,24 +69,28 @@ struct TeamListView: View {
                                     }
                                 }
                             }
-                            .navigationTitle("Teams list")
+                            .navigationTitle("Team list")
                         }
-                        
+
                         if networkManager.inProgress {
                             ProgressView()
                         }
                     }
-//                    .transition(.slide)
-//                    .animation(.bouncy)
-                    .alert(isPresented: $networkManager.showError, content: {
-                        Alert(title: Text(networkManager.errorMessage))
-                    })
+                    .opacity(startAnimation ? 1.0 : 0.0)
+                    .offset(CGSize(width: 0, height: startAnimation ? -10 : 0 ))
+                    .animation(.easeInOut(duration: 1).delay(1), value: startAnimation)
+                    .onAppear {
+                        startAnimation = true
+                    }
                 }
             }
         }
         .task {
             await networkManager.fetchAllTeams()
         }
+        .alert(isPresented: $networkManager.showError, content: {
+            Alert(title: Text(networkManager.errorMessage))
+        })
         
     }
 }

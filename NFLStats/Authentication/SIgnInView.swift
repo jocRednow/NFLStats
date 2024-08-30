@@ -17,6 +17,8 @@ struct SignInView: View {
     var body: some View {
         
         VStack {
+            AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
+            Spacer()
             NavigationLink {
                 SignInEmailView()
             } label: {
@@ -28,9 +30,10 @@ struct SignInView: View {
                     .background(Color.blue)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
+            Spacer()
         }
         .padding()
-        .navigationTitle("Sign In")
+        .navigationTitle("Welcome to NFL Stats!")
         
 //        ZStack {
 //            VStack {

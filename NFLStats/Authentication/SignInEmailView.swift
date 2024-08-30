@@ -40,12 +40,12 @@ struct SignInEmailView: View {
         VStack {
             TextField("Email...", text: $viewModel.email)
                 .padding()
-                .background(Color.blue.opacity(0.4))
+                .background(Color.gray.opacity(0.3))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             SecureField("Password...", text: $viewModel.password)
                 .padding()
-                .background(Color.blue.opacity(0.4))
+                .background(Color.gray.opacity(0.3))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Button {

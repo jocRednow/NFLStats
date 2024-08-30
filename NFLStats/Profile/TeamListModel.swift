@@ -12,6 +12,10 @@ struct Logo: Decodable, Identifiable {
     let href: String
     let width: Int
     let height: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case href, width, height
+    }
 }
 
 struct Team: Decodable, Identifiable {
@@ -32,6 +36,10 @@ struct Team: Decodable, Identifiable {
 struct TeamContainer: Decodable, Identifiable {
     let id = UUID()
     let team: Team
+    
+    enum CodingKeys: String, CodingKey {
+        case team
+    }
 }
 
 struct League: Decodable, Identifiable {
@@ -51,4 +59,8 @@ struct Sport: Decodable, Identifiable {
 struct Query: Decodable, Identifiable {
     let id = UUID()
     let sports: [Sport]
+    
+    enum CodingKeys: String, CodingKey {
+        case sports
+    }
 }
