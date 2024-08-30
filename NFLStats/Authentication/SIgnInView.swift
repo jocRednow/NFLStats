@@ -13,6 +13,7 @@ struct SignInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showSheet: Bool = false
+    @Binding var showSingInView: Bool
     
     var body: some View {
         
@@ -20,9 +21,9 @@ struct SignInView: View {
             AsyncImage(url: URL(string: "https://img.onesignal.com/t/7c55e6a6-0967-4220-9856-655bc35f87af.png"), scale: 6)
             Spacer()
             NavigationLink {
-                SignInEmailView()
+                SignInEmailView(showSingInView: $showSingInView)
             } label: {
-                Text("Sign In")
+                Text("Sign In With Email")
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(height: 55)
@@ -85,7 +86,7 @@ struct SignInView: View {
 
 #Preview {
     NavigationStack {
-        SignInView()
+        SignInView(showSingInView: .constant(true))
     }
 }
 

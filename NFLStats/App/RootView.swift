@@ -14,18 +14,7 @@ struct RootView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                Text("Settings")
-                
-                Button("Log Out") {
-                    Task {
-                        do {
-                            try AuthManager.shared.logOutUser()
-                            showSingInView = true
-                        } catch {
-                            print("Error: \(error)")
-                        }
-                    }
-                }
+                TeamListView(showSingInView: $showSingInView)
             }
         }
         .onAppear {
@@ -33,10 +22,8 @@ struct RootView: View {
             self.showSingInView = authUser == nil ? true : false
         }
         .fullScreenCover(isPresented: $showSingInView, content: {
-            // ContentView()
-            // TeamListView()
             NavigationStack {
-                SignInView()
+                SignInView(showSingInView: $showSingInView)
             }
         })
     }

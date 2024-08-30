@@ -13,28 +13,31 @@ final class SignInEmailViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     
-    func signIn() {
+    func signUp() async throws {
         guard !email.isEmpty || !password.isEmpty else {
             print("No email or password found.")
             return
         }
         
-        Task {
-            do {
-                let returnedUserData = try await AuthManager.shared.createUser(email: email, password: password)
-                print("Success!")
-                print(returnedUserData)
-            } catch {
-                print("Error: \(error)")
-            }
-        }
+        try await AuthManager.shared.createUser(email: email, password: password)
     }
+    
+    func signIn() async throws {
+        guard !email.isEmpty || !password.isEmpty else {
+            print("No email or password found.")
+            return
+        }
+        
+        try await AuthManager.shared.signInUser(email: email, password: password)
+    }
+    
     
 }
 
 struct SignInEmailView: View {
     
     @StateObject private var viewModel = SignInEmailViewModel()
+    @Binding var showSingInView: Bool
     
     var body: some View {
         VStack {
@@ -49,7 +52,25 @@ struct SignInEmailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Button {
-                viewModel.signIn()
+                Task {
+                    do {
+                        try await viewModel.signUp()
+                        showSingInView = false
+                        print("Success!")
+                        return
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                    
+                    do {
+                        try await viewModel.signIn()
+                        showSingInView = false
+                        print("Success!")
+                        return
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
             } label: {
                 Text("Sign In")
                     .font(.headline)
@@ -69,6 +90,6 @@ struct SignInEmailView: View {
 
 #Preview {
     NavigationStack {
-        SignInEmailView()
+        SignInEmailView(showSingInView: .constant(true))
     }
 }

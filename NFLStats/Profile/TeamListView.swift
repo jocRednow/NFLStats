@@ -7,10 +7,31 @@
 
 import SwiftUI
 
+@MainActor
+final class TeamListViewModel: ObservableObject {
+    
+    func logOut() throws {
+        try AuthManager.shared.logOutUser()
+    }
+    
+    func resetPassword() async throws {
+        let authUser = try AuthManager.shared.getAuthUser()
+        
+        guard let email = authUser.email else {
+            throw URLError(.fileDoesNotExist)
+        }
+        
+        try await AuthManager.shared.resetPasword(email: email)
+    }
+    
+}
+
 struct TeamListView: View {
     
     @StateObject var networkManager = NetworkManager()
+    @StateObject var viewModel = TeamListViewModel()
     @State private var startAnimation: Bool = false
+    @Binding var showSingInView: Bool
     
     var body: some View {
         
@@ -18,14 +39,13 @@ struct TeamListView: View {
             ForEach(networkManager.sports, id: \.id) { sport in
                 ForEach(sport.leagues, id: \.id) { league in
                     VStack {
-                        Text(league.abbreviation)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            .bold()
+                        
                         // Tab scroll for filter data
+                        
                         NavigationStack {
                             List(league.teams) { teamContainer in
                                 NavigationLink {
-                                    //TeamItemView(name: teamContainer.team)
+//                                    TeamItemView(name: teamContainer.team)
                                 } label: {
                                     HStack {
                                         AsyncImage(url: URL(string: teamContainer.team.logos[0].href)) { image in
@@ -70,6 +90,56 @@ struct TeamListView: View {
                                 }
                             }
                             .navigationTitle("Team list")
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    Menu {
+                                        Button("Reset password") {
+                                            Task {
+                                                do {
+                                                    try await viewModel.resetPassword()
+                                                    print("Password reset!")
+                                                } catch {
+                                                    print(error)
+                                                }
+                                            }
+                                        }
+//                                        Button("2") {}
+//                                        Button("3") {}
+                                    } label: {
+                                        ZStack {
+                                            Circle()
+                                                .frame(width: 30, height: 30)
+                                            .foregroundColor(Color(.secondarySystemFill))
+                                            Image(systemName: "list.bullet.circle")
+                                                .foregroundColor(.secondary)
+                                                .imageScale(.medium)
+                                                .frame(width: 44, height: 44)
+                                        }
+                                    }
+                                }
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button(action: {
+                                        Task {
+                                            do {
+                                                try viewModel.logOut()
+                                                showSingInView = true
+                                            } catch {
+                                                print("Error: \(error)")
+                                            }
+                                        }
+                                    }) {
+                                        ZStack {
+                                            Circle()
+                                                .frame(width: 30, height: 30)
+                                            .foregroundColor(Color(.secondarySystemFill))
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.secondary)
+                                                .imageScale(.medium)
+                                                .frame(width: 44, height: 44)
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         if networkManager.inProgress {
@@ -96,5 +166,5 @@ struct TeamListView: View {
 }
 
 #Preview {
-    TeamListView()
+    TeamListView(showSingInView: .constant(true))
 }
