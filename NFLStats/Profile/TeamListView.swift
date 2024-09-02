@@ -21,7 +21,13 @@ final class TeamListViewModel: ObservableObject {
             throw URLError(.fileDoesNotExist)
         }
         
-        try await AuthManager.shared.resetPasword(email: email)
+        try await AuthManager.shared.resetPassword(email: email)
+    }
+    
+    func updatePassword() async throws {
+        let newPssword = "PASSWORD123!"
+        
+        try await AuthManager.shared.updatePassword(password: newPssword)
     }
     
 }
@@ -103,8 +109,17 @@ struct TeamListView: View {
                                                 }
                                             }
                                         }
-//                                        Button("2") {}
-//                                        Button("3") {}
+                                        Button("Update password") {
+                                            Task {
+                                                do {
+                                                    // UpdatePasswordView
+                                                    try await viewModel.updatePassword()
+                                                    print("Password update!")
+                                                } catch {
+                                                    print(error)
+                                                }
+                                            }
+                                        }
                                     } label: {
                                         ZStack {
                                             Circle()

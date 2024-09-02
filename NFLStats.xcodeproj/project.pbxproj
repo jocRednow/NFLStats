@@ -14,6 +14,7 @@
 		D75DB8FF2C807D6000C72BC7 /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75DB8FE2C807D6000C72BC7 /* SignInEmailView.swift */; };
 		D75DB9012C80C32700C72BC7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75DB9002C80C32700C72BC7 /* AuthManager.swift */; };
 		D75DB9032C80CC9600C72BC7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75DB9022C80CC9600C72BC7 /* RootView.swift */; };
+		D75DB9052C85C01F00C72BC7 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75DB9042C85C01F00C72BC7 /* UpdatePasswordView.swift */; };
 		D76FE2332C787C0E00DB4488 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2322C787C0E00DB4488 /* TeamListView.swift */; };
 		D76FE2372C78C87200DB4488 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2362C78C87200DB4488 /* Color.swift */; };
 		D76FE2392C78C93400DB4488 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76FE2382C78C93400DB4488 /* NetworkManager.swift */; };
@@ -41,6 +42,7 @@
 		D75DB8FE2C807D6000C72BC7 /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
 		D75DB9002C80C32700C72BC7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		D75DB9022C80CC9600C72BC7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D75DB9042C85C01F00C72BC7 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		D76FE2322C787C0E00DB4488 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		D76FE2362C78C87200DB4488 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D76FE2382C78C93400DB4488 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				D75DB8F52C8076A500C72BC7 /* SIgnInView.swift */,
 				D75DB8F92C80773500C72BC7 /* SignUpView.swift */,
 				D75DB8FE2C807D6000C72BC7 /* SignInEmailView.swift */,
+				D75DB9042C85C01F00C72BC7 /* UpdatePasswordView.swift */,
 				D75DB9002C80C32700C72BC7 /* AuthManager.swift */,
 			);
 			path = Authentication;
@@ -258,6 +261,7 @@
 				D76FE2462C7DC68400DB4488 /* TeamItemView.swift in Sources */,
 				D75DB8F82C8076D700C72BC7 /* TitleSectionView.swift in Sources */,
 				D76FE2332C787C0E00DB4488 /* TeamListView.swift in Sources */,
+				D75DB9052C85C01F00C72BC7 /* UpdatePasswordView.swift in Sources */,
 				D75DB9012C80C32700C72BC7 /* AuthManager.swift in Sources */,
 				D76FE23D2C7C791100DB4488 /* APIService.swift in Sources */,
 				D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */,
