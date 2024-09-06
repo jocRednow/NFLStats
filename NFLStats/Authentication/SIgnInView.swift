@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-        
-    @State private var title: String = "Welcome to NFL Stats!"
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var showSheet: Bool = false
+
     @Binding var showSingInView: Bool
     
     var body: some View {
