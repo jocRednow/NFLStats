@@ -48,54 +48,55 @@ struct TeamListView: View {
                         
                         // Tab scroll for filter data
                         
-                        NavigationStack {
-                            List(league.teams) { teamContainer in
-                                NavigationLink {
-//                                    TeamItemView(name: teamContainer.team)
-                                } label: {
-                                    HStack {
-                                        AsyncImage(url: URL(string: teamContainer.team.logos[0].href)) { image in
-                                            image.resizable()
-                                        } placeholder: {
-                                            ProgressView()
+                        
+                        NavigationView {
+                            List {
+                                ForEach(league.teams, id: \.id) { teamContainer in
+                                    NavigationLink(destination: TeamItemView(id: teamContainer.team.id)) {
+                                        HStack {
+                                            AsyncImage(url: URL(string: teamContainer.team.logos[0].href)) { image in
+                                                image.resizable()
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .frame(width: 50, height: 50)
+                        
+                                            VStack(alignment: .leading) {
+                                                Text(teamContainer.team.displayName)
+                                                    .font(.headline)
+                                                Text("City: \(teamContainer.team.location)")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.secondary)
+                                            }
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .padding(.horizontal)
+                                            
+                                            Spacer()
+                                            Rectangle()
+                                                .frame(width: 20, height: 20)
+                                                    .foregroundStyle(Color(hex: teamContainer.team.color))
+                                                    .clipShape(
+                                                        RoundedRectangle(cornerRadius: 20)
+                                                    )
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 20)
+                                                            .stroke(.thinMaterial, lineWidth: 1)
+                                                    )
+                                            Rectangle()
+                                                .frame(width: 20, height: 20)
+                                                    .foregroundStyle(Color(hex: teamContainer.team.alternateColor))
+                                                    .clipShape(
+                                                        RoundedRectangle(cornerRadius: 20)
+                                                    )
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 20)
+                                                            .stroke(.thinMaterial, lineWidth: 1)
+                                                    )
                                         }
-                                        .frame(width: 50, height: 50)
-                    
-                                        VStack(alignment: .leading) {
-                                            Text(teamContainer.team.displayName)
-                                                .font(.headline)
-                                            Text("City: \(teamContainer.team.location)")
-                                                .font(.subheadline)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .padding(.horizontal)
-                                        
-                                        Spacer()
-                                        Rectangle()
-                                            .frame(width: 20, height: 20)
-                                                .foregroundStyle(Color(hex: teamContainer.team.color))
-                                                .clipShape(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                )
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .stroke(.thinMaterial, lineWidth: 1)
-                                                )
-                                        Rectangle()
-                                            .frame(width: 20, height: 20)
-                                                .foregroundStyle(Color(hex: teamContainer.team.alternateColor))
-                                                .clipShape(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                )
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .stroke(.thinMaterial, lineWidth: 1)
-                                                )
                                     }
                                 }
                             }
-                            .navigationTitle("Team list")
+                            .navigationBarTitle("Team list")
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarLeading) {
                                     Menu {
@@ -156,7 +157,7 @@ struct TeamListView: View {
                                 }
                             }
                         }
-
+                        
                         if networkManager.inProgress {
                             ProgressView()
                         }

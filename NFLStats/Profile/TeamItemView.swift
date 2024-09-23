@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct TeamItemView: View {
-    
-//    @Binding var name: any ObservableObject
-    
+        
+    let id: String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("ID of Item \(id)")
+            .navigationBarTitle("Detail", displayMode: .inline)
     }
 }
 
 #Preview {
-    TeamItemView()
+    TeamItemView(id: "4")
 }
