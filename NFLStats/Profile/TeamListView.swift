@@ -48,7 +48,6 @@ struct TeamListView: View {
                         
                         // Tab scroll for filter data
                         
-                        
                         NavigationView {
                             List {
                                 ForEach(league.teams, id: \.id) { teamContainer in
