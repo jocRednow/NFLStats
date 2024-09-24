@@ -9,11 +9,14 @@ import Foundation
 
 enum Link {
     case teams
+    case team
     
     var url: URL {
         switch self {
         case .teams:
             return URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams")!
+        case .team:
+            return URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/4")!
         }
     }
 }

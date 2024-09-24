@@ -30,6 +30,7 @@
 		D76FE24F2C7DD11100DB4488 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D76FE24E2C7DD11100DB4488 /* FirebaseStorage */; };
 		D76FE2572C7E0A3B00DB4488 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D76FE2562C7E0A3B00DB4488 /* GoogleService-Info.plist */; };
 		D79117562C76189300E1F3E4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79117552C76189300E1F3E4 /* String.swift */; };
+		D79AD6872CA2C061001F3EC0 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79AD6862CA2C05F001F3EC0 /* TeamModel.swift */; };
 		D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */; };
 		D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58E2C74A6C1006FC710 /* ContentView.swift */; };
 		D7AFC5912C74A6C3006FC710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AFC5902C74A6C3006FC710 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		D76FE2452C7DC68400DB4488 /* TeamItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamItemView.swift; sourceTree = "<group>"; };
 		D76FE2562C7E0A3B00DB4488 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/Firebase/NFL-Stats-key/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D79117552C76189300E1F3E4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D79AD6862CA2C05F001F3EC0 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 		D7AFC5892C74A6C1006FC710 /* NFLStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFLStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AFC58C2C74A6C1006FC710 /* NFLStatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFLStatsApp.swift; sourceTree = "<group>"; };
 		D7AFC58E2C74A6C1006FC710 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		D76FE23A2C78CD6300DB4488 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D79AD6862CA2C05F001F3EC0 /* TeamModel.swift */,
 				D76FE2412C7C7B3900DB4488 /* TeamListModel.swift */,
 				D76FE2322C787C0E00DB4488 /* TeamListView.swift */,
 				D76FE2452C7DC68400DB4488 /* TeamItemView.swift */,
@@ -278,6 +281,7 @@
 				D75DB8FF2C807D6000C72BC7 /* SignInEmailView.swift in Sources */,
 				D75DB8FA2C80773500C72BC7 /* SignUpView.swift in Sources */,
 				D75DB9032C80CC9600C72BC7 /* RootView.swift in Sources */,
+				D79AD6872CA2C061001F3EC0 /* TeamModel.swift in Sources */,
 				D76FE2372C78C87200DB4488 /* Color.swift in Sources */,
 				D75DB8F62C8076A500C72BC7 /* SIgnInView.swift in Sources */,
 				D76FE2422C7C7B3900DB4488 /* TeamListModel.swift in Sources */,
