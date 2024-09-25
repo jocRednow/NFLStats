@@ -21,7 +21,7 @@ struct TeamItemView: View {
             Text(networkManager.team?.nickname ?? "Test")
         }
         .task {
-            await networkManager.fetchTeam()
+            await networkManager.fetchTeam(id: id)
         }
     }
 }

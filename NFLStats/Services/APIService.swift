@@ -16,7 +16,7 @@ enum Link {
         case .teams:
             return URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams")!
         case .team:
-            return URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/4")!
+            return URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/")!
         }
     }
 }

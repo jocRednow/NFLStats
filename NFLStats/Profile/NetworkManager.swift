@@ -11,7 +11,7 @@ private actor ServiceStore {
     
     func loadTeamList() async throws -> [Sport] {
         var sports = [Sport]()
-        let (data, response) = try await URLSession.shared.data (from: Link.teams.url)
+        let (data, response) = try await URLSession.shared.data(from: Link.teams.url)
         
         let httpResponse = response as? HTTPURLResponse
         let statusCode = httpResponse?.statusCode ?? 0
@@ -29,9 +29,9 @@ private actor ServiceStore {
         return sports
     }
     
-    func loadTeam() async throws -> TeamItem {
+    func loadTeam(id: String) async throws -> TeamItem {
         var team: TeamItem
-        let (data, response) = try await URLSession.shared.data (from: Link.team.url)
+        let (data, response) = try await URLSession.shared.data(from: Link.team.url)
         
         let httpResponse = response as? HTTPURLResponse
         let statusCode = httpResponse?.statusCode ?? 0
@@ -75,9 +75,9 @@ final class NetworkManager: ObservableObject {
         }
     }
     
-    func fetchTeam() async {
+    func fetchTeam(id: String) async {
         do {
-            team = try await store.loadTeam()
+            team = try await store.loadTeam(id: id)
         } catch {
             print("Catch: \(error)")
         }
