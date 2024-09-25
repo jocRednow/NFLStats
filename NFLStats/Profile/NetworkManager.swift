@@ -29,8 +29,8 @@ private actor ServiceStore {
         return sports
     }
     
-    func loadTeam() async throws -> [TeamItem] {
-        var team = [TeamItem]()
+    func loadTeam() async throws -> TeamItem {
+        var team: TeamItem
         let (data, response) = try await URLSession.shared.data (from: Link.team.url)
         
         let httpResponse = response as? HTTPURLResponse
@@ -40,11 +40,11 @@ private actor ServiceStore {
             throw Mistake.tooManyRequests
         }
         
-        guard let decodedQuery = try? JSONDecoder().decode(TeamItem.self, from: data) else {
+        guard let decodedQuery = try? JSONDecoder().decode(QueryTeam.self, from: data) else {
             throw Mistake.decodingError
         }
         
-        team = decodedQuery.self
+        team = decodedQuery.team
         
         return team
     }
@@ -54,8 +54,7 @@ private actor ServiceStore {
 final class NetworkManager: ObservableObject {
     
     @Published var sports = [Sport]()
-    @Published var team = [TeamItem]()
-    
+    @Published var team: TeamItem?
     @Published var inProgress = false
     @Published var showError = false
     @Published var errorMessage = ""
@@ -77,16 +76,10 @@ final class NetworkManager: ObservableObject {
     }
     
     func fetchTeam() async {
-        inProgress = true
-        defer {
-            inProgress = false
-        }
         do {
             team = try await store.loadTeam()
         } catch {
             print("Catch: \(error)")
-            errorMessage = warningMessage(error: error as! Mistake)
-            showError = true
         }
     }
 }

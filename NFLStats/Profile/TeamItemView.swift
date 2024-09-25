@@ -15,13 +15,14 @@ struct TeamItemView: View {
 
     var body: some View {
         
-        Text("ID of Item \(id)")
-            .navigationBarTitle("Detail", displayMode: .inline)
-            .task {
-                await networkManager.fetchTeam()
-            }
-        
-//        Text("\(networkManager.team.location)")
+        VStack {
+            Text("ID of Item \(id)")
+                .navigationBarTitle("Detail", displayMode: .inline)
+            Text(networkManager.team?.nickname ?? "Test")
+        }
+        .task {
+            await networkManager.fetchTeam()
+        }
     }
 }
 

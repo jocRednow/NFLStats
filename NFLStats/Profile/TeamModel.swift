@@ -22,11 +22,11 @@ struct TeamItem: Decodable, Identifiable {
 //    }
 }
 
-//struct TeamQuery: Decodable, Identifiable {
-//    let id = UUID()
-//    let team: TeamItem
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case team
-//    }
-//}
+struct QueryTeam: Decodable, Identifiable {
+    let id = UUID()
+    let team: TeamItem
+    
+    enum CodingKeys: String, CodingKey {
+        case team
+    }
+}
