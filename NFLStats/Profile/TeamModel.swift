@@ -14,7 +14,7 @@ struct TeamItem: Decodable, Identifiable {
     let location: String
     let color: String
     let alternateColor: String
-//    let logos: [Logo]
+    let logos: [Logo]
     
 //    let ref: String
 //    enum CodingKeys: String, CodingKey {

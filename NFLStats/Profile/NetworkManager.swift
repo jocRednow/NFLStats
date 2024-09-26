@@ -31,7 +31,9 @@ private actor ServiceStore {
     
     func loadTeam(id: String) async throws -> TeamItem {
         var team: TeamItem
-        let (data, response) = try await URLSession.shared.data(from: Link.team.url)
+//        let (data, response) = try await URLSession.shared.data(from: Link.team.url)
+        let url = URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/\(id)")
+        let (data, response) = try await URLSession.shared.data(from: url!)
         
         let httpResponse = response as? HTTPURLResponse
         let statusCode = httpResponse?.statusCode ?? 0
