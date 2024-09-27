@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct TeamItemView: View {
     
@@ -18,6 +19,23 @@ struct TeamItemView: View {
         VStack {
 //            Text("ID of Item \(id)")
 //                .navigationBarTitle("Detail", displayMode: .inline)
+            HStack {
+                VStack {
+                    Text("\(networkManager.team?.nextEvent[0].seasonType.name ?? "")")
+                    Text("Record: \(networkManager.team?.record.items[0].summary ?? "")")
+                }
+            }
+            Spacer()
+            HStack {
+                VStack {
+                    Text(Date.now.formatted(date: .long, time: .shortened))
+                    Text(Date.now.formatted(date: .numeric, time: .omitted))
+                    Text(networkManager.team?.nextEvent[0].date ?? "")
+                    Text("Next Event: \(networkManager.team?.nextEvent[0].shortName ?? "")")
+//                    Text(networkManager.team?.nextEvent[0].date, format: .dateTime.day().month().year())
+//                    Text("Date: \(networkManager.team?.nextEvent[0].date ?? "")")
+                }
+            }
             Spacer()
             Text("Team: \(networkManager.team?.nickname ?? "")")
                 .foregroundStyle(Color(hex: networkManager.team?.color == "ffffff" ? "000000" : networkManager.team?.color ?? "000000"))
