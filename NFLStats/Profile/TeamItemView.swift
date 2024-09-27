@@ -11,7 +11,7 @@ import Foundation
 struct TeamItemView: View {
     
     @StateObject var networkManager = NetworkManager()
-    
+    @State private var startAnimation: Bool = false
     let id: String
 
     var body: some View {
@@ -28,12 +28,10 @@ struct TeamItemView: View {
             Spacer()
             HStack {
                 VStack {
-                    Text(Date.now.formatted(date: .long, time: .shortened))
-                    Text(Date.now.formatted(date: .numeric, time: .omitted))
-                    Text(networkManager.team?.nextEvent[0].date ?? "")
+//                    Text(Date.now.formatted(date: .long, time: .shortened))
+//                    Text(Date.now.formatted(date: .numeric, time: .omitted))
                     Text("Next Event: \(networkManager.team?.nextEvent[0].shortName ?? "")")
-//                    Text(networkManager.team?.nextEvent[0].date, format: .dateTime.day().month().year())
-//                    Text("Date: \(networkManager.team?.nextEvent[0].date ?? "")")
+                    Text(networkManager.team?.nextEvent[0].date ?? "")
                 }
             }
             Spacer()
@@ -50,13 +48,21 @@ struct TeamItemView: View {
                     Color.gray
                 }
                 .frame(width: 250, height: 250)
-//                .frame(width: CGFloat((networkManager.team?.logos[0].width)!), height: CGFloat((networkManager.team?.logos[0].height)!))
             }
             Spacer()
+        }
+        .opacity(startAnimation ? 1.0 : 0.0)
+        .offset(CGSize(width: 0, height: startAnimation ? 10 : 0 ))
+        .animation(.easeInOut(duration: 1).delay(1), value: startAnimation)
+        .onAppear {
+            startAnimation = true
         }
         .task {
             await networkManager.fetchTeam(id: id)
         }
+        .alert(isPresented: $networkManager.showError, content: {
+            Alert(title: Text(networkManager.errorMessage))
+        })
     }
 }
 

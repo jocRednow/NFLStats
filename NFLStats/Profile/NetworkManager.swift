@@ -78,10 +78,16 @@ final class NetworkManager: ObservableObject {
     }
     
     func fetchTeam(id: String) async {
+        inProgress = true
+        defer {
+            inProgress = false
+        }
         do {
             team = try await store.loadTeam(id: id)
         } catch {
             print("Catch: \(error)")
+            errorMessage = warningMessage(error: error as! Mistake)
+            showError = true
         }
     }
 }
