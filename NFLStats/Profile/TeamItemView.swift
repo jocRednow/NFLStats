@@ -22,7 +22,9 @@ struct TeamItemView: View {
             HStack {
                 VStack {
                     Text("\(networkManager.team?.nextEvent[0].seasonType.name ?? "")")
+                        .bold()
                     Text("Record: \(networkManager.team?.record.items[0].summary ?? "")")
+                        .font(.title)
                 }
             }
             Spacer()
