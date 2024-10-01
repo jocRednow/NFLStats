@@ -54,7 +54,6 @@ struct TeamItemView: View {
             Spacer()
         }
         .opacity(startAnimation ? 1.0 : 0.0)
-        .offset(CGSize(width: 0, height: startAnimation ? 10 : 0 ))
         .animation(.easeInOut(duration: 1).delay(1), value: startAnimation)
         .onAppear {
             startAnimation = true
