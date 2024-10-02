@@ -12,6 +12,7 @@ struct TeamItemView: View {
     
     @StateObject var networkManager = NetworkManager()
     @State private var startAnimation: Bool = false
+    @State private var currentAmount: CGFloat = 0
     let id: String
 
     var body: some View {
@@ -49,7 +50,19 @@ struct TeamItemView: View {
                 } placeholder: {
                     Color.gray
                 }
-                .frame(width: 250, height: 250)
+                .frame(width: 100, height: 100)
+                .scaleEffect(1 + currentAmount)
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged{ value in
+                            currentAmount = value - 1
+                        }
+                        .onEnded{ value in
+                            withAnimation(.spring()) {
+                                currentAmount = 0
+                            }
+                        }
+                )
             }
             Spacer()
         }
