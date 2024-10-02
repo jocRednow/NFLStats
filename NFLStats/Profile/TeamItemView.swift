@@ -30,11 +30,14 @@ struct TeamItemView: View {
             }
             Spacer()
             HStack {
-                VStack {
-//                    Text(Date.now.formatted(date: .long, time: .shortened))
-//                    Text(Date.now.formatted(date: .numeric, time: .omitted))
-                    Text("Next Event: \(networkManager.team?.nextEvent[0].shortName ?? "")")
-                    Text(networkManager.team?.nextEvent[0].date ?? "")
+                VStack(alignment: .leading) {
+                    Text("Next Event:")
+                    Text(networkManager.team?.nextEvent[0].name ?? "")
+                        .font(.title2)
+                        .bold()
+                    Text(networkManager.team?.nextEvent[0].date.convertDate(currentFormat: "yyyy-MM-dd'T'HH:mm'Z'", toFormat: "dd MMM yyyy HH:mm") ?? "")
+                        .font(.title3)
+                        .bold()
                 }
             }
             Spacer()
@@ -50,7 +53,7 @@ struct TeamItemView: View {
                 } placeholder: {
                     Color.gray
                 }
-                .frame(width: 100, height: 100)
+                .frame(width: 150, height: 150)
                 .scaleEffect(1 + currentAmount)
                 .gesture(
                     MagnificationGesture()

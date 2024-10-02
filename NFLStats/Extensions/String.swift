@@ -27,4 +27,15 @@ extension String {
         return regex.firstMatch(in: self, range: NSRange(location: 0, length: count)) != nil
     }
     
+    func convertDate(currentFormat: String, toFormat : String) ->  String {
+        let dateFormator = DateFormatter()
+        dateFormator.dateFormat = currentFormat
+//        dateFormator.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        let resultDate = dateFormator.date(from: self)
+        dateFormator.dateFormat = toFormat
+        
+        return dateFormator.string(from: resultDate!)
+    }
+    
 }
