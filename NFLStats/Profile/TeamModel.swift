@@ -43,6 +43,7 @@ struct TeamItem: Decodable, Identifiable {
     let logos: [Logo]
     let record: RecordContainer
     let nextEvent: [NextEvent]
+    let standingSummary: String
     
 //    let ref: String
 //    enum CodingKeys: String, CodingKey {

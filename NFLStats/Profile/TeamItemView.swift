@@ -21,13 +21,19 @@ struct TeamItemView: View {
 //            Text("ID of Item \(id)")
 //                .navigationBarTitle("Detail", displayMode: .inline)
             HStack {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("\(networkManager.team?.nextEvent[0].seasonType.name ?? "")")
                         .bold()
                     Text("Record: \(networkManager.team?.record.items[0].summary ?? "")")
                         .font(.title)
                 }
+                Spacer()
+                VStack {
+                    Text("\(networkManager.team?.standingSummary ?? "")")
+                        .fontWeight(.semibold)
+                }
             }
+            .padding(.horizontal)
             Spacer()
             HStack {
                 VStack(alignment: .leading) {
