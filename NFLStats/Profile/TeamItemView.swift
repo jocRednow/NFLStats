@@ -30,17 +30,18 @@ struct TeamItemView: View {
                 Spacer()
                 VStack {
                     Text("\(networkManager.team?.standingSummary ?? "")")
+                        .font(.title2)
                         .fontWeight(.semibold)
                 }
             }
-            .padding(.horizontal)
-            Spacer()
+            .padding()
+            
             HStack {
                 VStack(alignment: .leading) {
                     Text("Next Event:")
                     Text(networkManager.team?.nextEvent[0].name ?? "")
                         .font(.title2)
-                        .bold()
+                        .fontWeight(.semibold)
                     Text(networkManager.team?.nextEvent[0].date.convertDate(currentFormat: "yyyy-MM-dd'T'HH:mm'Z'", toFormat: "dd MMM yyyy HH:mm") ?? "")
                         .font(.title3)
                         .bold()
@@ -73,6 +74,8 @@ struct TeamItemView: View {
                         }
                 )
             }
+            Text("Stadium: \(networkManager.team?.franchise.venue.fullName ?? "")")
+            Text("Address: \(networkManager.team?.franchise.venue.address.zipCode ?? ""), \(networkManager.team?.franchise.venue.address.city ?? ""), \(networkManager.team?.franchise.venue.address.state ?? "")")
             Spacer()
         }
         .opacity(startAnimation ? 1.0 : 0.0)

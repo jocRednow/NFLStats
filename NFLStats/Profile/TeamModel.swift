@@ -22,14 +22,32 @@ struct NextEvent: Decodable, Identifiable {
     let seasonType: SeasonType
 }
 
-struct Item: Decodable, Identifiable {
-    let id = UUID()
+struct Address: Decodable {
+    let city: String
+    let state: String
+    let zipCode: String
+}
+
+struct Venue: Decodable, Identifiable {
+    let id: String
+    let fullName: String
+    let address: Address
+    let grass: Bool
+    let indoor: Bool
+}
+
+struct Franchise: Decodable, Identifiable {
+    let id: String
+    let uid: String
+    let venue : Venue
+}
+
+struct Item: Decodable {
     let type: String
     let summary: String
 }
 
-struct RecordContainer: Decodable, Identifiable {
-    let id = UUID()
+struct RecordContainer: Decodable {
     let items: [Item]
 }
 
@@ -42,6 +60,7 @@ struct TeamItem: Decodable, Identifiable {
     let alternateColor: String
     let logos: [Logo]
     let record: RecordContainer
+    let franchise: Franchise
     let nextEvent: [NextEvent]
     let standingSummary: String
     
