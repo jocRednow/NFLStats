@@ -13,6 +13,7 @@ struct TeamItemView: View {
     @StateObject var networkManager = NetworkManager()
     @State private var startAnimation: Bool = false
     @State private var currentAmount: CGFloat = 0
+    @State private var selectedPlayer: PlayerSheet?
     let id: String
 
     var body: some View {
@@ -77,6 +78,30 @@ struct TeamItemView: View {
             Text("Stadium: \(networkManager.team?.franchise.venue.fullName ?? "")")
             Text("Address: \(networkManager.team?.franchise.venue.address.zipCode ?? ""), \(networkManager.team?.franchise.venue.address.city ?? ""), \(networkManager.team?.franchise.venue.address.state ?? "")")
             Spacer()
+            Text("Roster:")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding(.top)
+            ScrollView {
+                VStack {
+                    ForEach(networkManager.team?.athletes ?? []) { athlete in
+                        Button("\(athlete.fullName)") {
+                            selectedPlayer = PlayerSheet(title: "\(athlete.fullName)")
+                        }
+                        .font(.headline)
+                        .frame(height: 200)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 10)
+                        .padding()
+                        .id(athlete.id)
+                    }
+                }
+                .sheet(item: $selectedPlayer) { model in
+                    PlayerView(selectedPlayer: model)
+                }
+            }
         }
         .opacity(startAnimation ? 1.0 : 0.0)
         .animation(.easeInOut(duration: 1).delay(1), value: startAnimation)

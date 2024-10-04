@@ -51,6 +51,17 @@ struct RecordContainer: Decodable {
     let items: [Item]
 }
 
+struct Athlete: Decodable, Identifiable {
+    let id: String
+    let fullName: String
+    let weight: Int
+    let height: Int
+//    let birthPlace: BirthPlace
+//    let headshot: Headshot
+//    let position: Position
+//    let draft: Draft
+}
+
 struct TeamItem: Decodable, Identifiable {
     let id: String
     let displayName: String
@@ -60,6 +71,7 @@ struct TeamItem: Decodable, Identifiable {
     let alternateColor: String
     let logos: [Logo]
     let record: RecordContainer
+    let athletes: [Athlete]
     let franchise: Franchise
     let nextEvent: [NextEvent]
     let standingSummary: String

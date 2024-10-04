@@ -28,11 +28,15 @@ private actor ServiceStore {
         
         return sports
     }
+    /*
+    Schedule: site.api.espn.com/apis/site/v2/sports/football/nfl/teams/:team_id/schedule?season=:year
+    Injuries: sports.core.api.espn.com/v2/sports/football/leagues/nfl/teams/:team_id/injuries
+    */
     
     func loadTeam(id: String) async throws -> TeamItem {
         var team: TeamItem
 //        let (data, response) = try await URLSession.shared.data(from: Link.team.url)
-        let url = URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/\(id)")
+        let url = URL(string: "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/\(id)?enable=roster,projection,stats")
         let (data, response) = try await URLSession.shared.data(from: url!)
         
         let httpResponse = response as? HTTPURLResponse

@@ -35,6 +35,8 @@
 		D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFC58E2C74A6C1006FC710 /* ContentView.swift */; };
 		D7AFC5912C74A6C3006FC710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AFC5902C74A6C3006FC710 /* Assets.xcassets */; };
 		D7AFC5942C74A6C3006FC710 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AFC5932C74A6C3006FC710 /* Preview Assets.xcassets */; };
+		D7E024B92CB0071D00A4A09A /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E024B82CB0071D00A4A09A /* PlayerModel.swift */; };
+		D7E024BB2CB008DF00A4A09A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E024BA2CB008DF00A4A09A /* PlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		D7AFC58E2C74A6C1006FC710 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7AFC5902C74A6C3006FC710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7AFC5932C74A6C3006FC710 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D7E024B82CB0071D00A4A09A /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		D7E024BA2CB008DF00A4A09A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 		D76FE23A2C78CD6300DB4488 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D7E024B82CB0071D00A4A09A /* PlayerModel.swift */,
+				D7E024BA2CB008DF00A4A09A /* PlayerView.swift */,
 				D79AD6862CA2C05F001F3EC0 /* TeamModel.swift */,
 				D76FE2412C7C7B3900DB4488 /* TeamListModel.swift */,
 				D76FE2322C787C0E00DB4488 /* TeamListView.swift */,
@@ -266,6 +272,7 @@
 				D76FE2442C7C869600DB4488 /* Helpers.swift in Sources */,
 				D75DB8FC2C80776600C72BC7 /* MapView.swift in Sources */,
 				D7AFC58F2C74A6C1006FC710 /* ContentView.swift in Sources */,
+				D7E024BB2CB008DF00A4A09A /* PlayerView.swift in Sources */,
 				D76FE23F2C7C798200DB4488 /* DataService.swift in Sources */,
 				D76FE2462C7DC68400DB4488 /* TeamItemView.swift in Sources */,
 				D71374032C8B4225005A3D1C /* EmailFieldView.swift in Sources */,
@@ -274,6 +281,7 @@
 				D71374052C8B42FC005A3D1C /* PasswordFieldView.swift in Sources */,
 				D75DB9052C85C01F00C72BC7 /* UpdatePasswordView.swift in Sources */,
 				D75DB9012C80C32700C72BC7 /* AuthManager.swift in Sources */,
+				D7E024B92CB0071D00A4A09A /* PlayerModel.swift in Sources */,
 				D76FE23D2C7C791100DB4488 /* APIService.swift in Sources */,
 				D7AFC58D2C74A6C1006FC710 /* NFLStatsApp.swift in Sources */,
 				D76FE2392C78C93400DB4488 /* NetworkManager.swift in Sources */,
