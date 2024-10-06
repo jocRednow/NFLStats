@@ -84,9 +84,19 @@ struct TeamItemView: View {
                 .padding(.top)
             ScrollView {
                 VStack {
-                    ForEach(networkManager.team?.athletes ?? []) { athlete in
-                        Button("\(athlete.fullName)") {
-                            selectedPlayer = PlayerSheet(title: "\(athlete.fullName)")
+                    ForEach(networkManager.team?.athletes ?? [], id: \.id) { athlete in
+                        HStack {
+//                            AsyncImage(url: URL(string: athlete.headshot.href)) { image in
+//                                image
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                            } placeholder: {
+//                                Color.gray
+//                            }
+//                            .frame(width: 150, height: 150)
+                            Button("\(athlete.fullName)") {
+                                selectedPlayer = PlayerSheet(title: "\(athlete.fullName)")
+                            }
                         }
                         .font(.headline)
                         .frame(height: 200)
@@ -98,9 +108,9 @@ struct TeamItemView: View {
                         .id(athlete.id)
                     }
                 }
-                .sheet(item: $selectedPlayer) { model in
-                    PlayerView(selectedPlayer: model)
-                }
+//                .sheet(item: $selectedPlayer) { model in
+//                    PlayerView(selectedPlayer: model)
+//                }
             }
         }
         .opacity(startAnimation ? 1.0 : 0.0)

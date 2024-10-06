@@ -39,16 +39,18 @@ struct Venue: Decodable, Identifiable {
 struct Franchise: Decodable, Identifiable {
     let id: String
     let uid: String
-    let venue : Venue
+    let venue: Venue
 }
 
-struct Item: Decodable {
-    let type: String
-    let summary: String
+struct Headshot: Decodable {
+    let href: String
+    let alt: String
 }
 
-struct RecordContainer: Decodable {
-    let items: [Item]
+struct BirthPlace: Decodable {
+    let city: String
+    let state: String
+    let country: String
 }
 
 struct Athlete: Decodable, Identifiable {
@@ -60,6 +62,15 @@ struct Athlete: Decodable, Identifiable {
 //    let headshot: Headshot
 //    let position: Position
 //    let draft: Draft
+}
+
+struct Item: Decodable {
+    let type: String
+    let summary: String
+}
+
+struct RecordContainer: Decodable {
+    let items: [Item]
 }
 
 struct TeamItem: Decodable, Identifiable {
